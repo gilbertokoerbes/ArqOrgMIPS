@@ -41,31 +41,11 @@ size: .word 12								#Tamanho/Numero de itens do array
 	.globl main
 
 main:	
-#	##Carregando o Array A na pilha (DESNECESSARIO)
-#	la $t0, A 		#Carrega o endereco do vetor A		
-#	lw $t1, size		#le o tamanho do array indicado	
-#	mul $t2, $t1, -4 	#multiplica o tamanho indicado por -4(espaço por valor)
-#	move $t3, $zero		#contador up
-#
-#	
-#	loop1:
-#	ble $t3, $t2, next 	#contador Down é menor que as posicoes alocadas em pilha(-48)? sim -> label
-#	
-#	add $sp, $sp, -4	#Cria espaço na pilha
-#	lw $t4, 0($t0) 		#carrega o valor obtido do endereço/indice A
-#	sw $t4, 0($sp)		#carrega o valor na pilha
-#	addi $t0, $t0, 4 	#incrementa um indice da posicao de memoria do array A
-#	
-#	addi $t3, $t3, -4 	#descrementa -4 em relação ao anterior. Ex: 0 - 4 -> -4
-#	j loop1
-#		
-#	#continua execucao
-#	next:
-	
 	# passagem de paremetros
-	li $a0, 0
-	li $a1, 11
-	li $a3, 9
+	
+	li $a0, 0  #Indice Inicio
+	li $a1, 11 #Indice Fim
+	li $a3, 0x37 #Valor procurado
 	
 	addi $sp, $sp, -16
 	la $t0, A
@@ -75,8 +55,15 @@ main:
 	sw $a3, 0($sp)
 	j binSearch
 	nextBin:
-	lw $s0, ($v0)
 	
+	move $s0, $v0
+	#li  $v0, 1           # service 1 is print integer
+    	#lw $a0, rtnPosicao # load desired value into argument register $a0, using pseudo-op
+    	#syscall
+	
+	#para execucao
+	li  $v0, 10           
+    	syscall
 	
 	
 	binSearch:
@@ -94,20 +81,21 @@ main:
 	#else
 	else:
 	add $t2, $t0, $t1 #soma prim e Ult
-	srl $t3, $t2, 1 # divide por dois para encontrar o Indice[meio]
+	#li $t7, 2
+	div $t3, $t2, 2  # divide por dois para encontrar o Indice[meio]
 	mul $t6, $t3, 4 #multiplica o indice pelo tamanho de 4
-	lw  $t4, A($t3) #lê o valor[i(meio)] do array e armazena
+	lw  $t4, A($t6) #lê o valor[i(meio)] do array e armazena
 	lw $t5, 0($sp) #le o valor na base da pilha (valor procurado)
 	
 	#if
 	beq $t5, $t4, igualMeio
 	j elseIf 	#caso nao seja igual meio, pular para else if
 		igualMeio:
-			lw $v0, ($t3) #retorna a posição encontrada
+			move $v0, $t3 #retorna a posição encontrada
 			j nextBin	
 	elseIf:
 		blt $t5, $t4, menorMeio
-		bgt $t5, $t4, maiorMeio
+		j maiorMeio
 		
 		menorMeio:
 			addi $sp, $sp, -16 	#libera espaço na pilha
