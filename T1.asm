@@ -1,67 +1,77 @@
-# int BinSearch(const int A[], int Prim, int Ult, int Valor)
-# // ---------------------------------------------------------
-#// Dado um vetor A, pesquisa entre elementos A[Prim] 
-#// até A[Ult] por Valor, usando pesquisa binária.
-#//
-#// Pré-condições: 0<=Prim, Ult<=Tam-1, onde Tam é o tamanho
-#// máximo do Vetor A e A[Prim]<=A[Prim+1]<=...<=A[Ult], 
-#// ou seja, o vetor está ordenado em ordem crescente.
-#//
-#// Pós-condição: Se Valor existe no vetor A, retorna
-#// o índice do vetor igual a Valor, senão retorna -1.
-#// ---------------------------------------------------------
-#{
-# if (Prim > Ult)
-# return -1; // Valor não existe
-# else
-# { // Invariante: Se Valor existe em A, 
-# // A[Prim]<=Valor<=A[Ult]
-# int Meio = (Prim + Ult)/2;
-# if (Valor == A[Meio])
-# return Meio; // Encontrou Valor em A[Meio]
-# else if (Valor<A[Meio])
-# return BinSearch(A, Prim, Meio-1, Valor);
-#// Recursão na metade inferior do vetor
-# else
-# return BinSearch(A, Meio+1, Ult, Valor);
-#// Recursão na metade superior do vetor
-# } // end else
-#} // end BinSearch
+##Authores: Arthur_Gil(20101221) Gilberto_Koerbes(20204011)##
 
 .data
 A: .word -0x5 -0x1 0x5 0x9 0x12 0x15 0x21 0x29 0x31 0x58 0x250 0x325	#Valores do array
 prim: .word 0								#Aponta para a primeira posição do array (a[0])
-ult: .word 0								#Aponta para a ultima posição do array (a[length-1])
-rtnPosicao: .word 0								#Retorna o índice do valor correspondente
+ult: .word 0								#Retorna o índice do valor correspondente
 meio: .word 0								
 size: .word 12								#Tamanho/Numero de itens do array
-#msgSaida: .	
+msgSaida: .asciiz "\n\n Valor para primeira busca = "	
 	
 	.text
 	.globl main
 
 main:	
 	# passagem de paremetros
-	
+	move $s2,$zero
+	addi $sp, $sp, -16 #abre espaço memória
+	inicio:
+	beq $s2,0 label0
+	beq $s2,1 label1
+	beq $s2,2 label2
+	beq $s2,3 label3
+	bgt $s2,3 encerra	
+			
+					
+	label0:
 	li $a0, 0  #Indice Inicio
 	li $a1, 11 #Indice Fim
-	li $a3, 0x37 #Valor procurado
+	li $a3, 0x325 #Valor procurado
+	j carregaPilha
 	
-	addi $sp, $sp, -16
-	la $t0, A
-	sw $t0, 12($sp)
-	sw $a0, 8($sp)
-	sw $a1, 4($sp)
-	sw $a3, 0($sp)
+	label1:
+	li $a0, 11  #Indice Inicio
+	li $a1, 11 #Indice Fim
+	li $a3, -0x01 #Valor procurado
+	j carregaPilha
+	
+	label2:
+	li $a0, 0  #Indice Inicio
+	li $a1, 5 #Indice Fim
+	li $a3, -0x01 #Valor procurado
+	j carregaPilha
+	
+	label3:
+	li $a0, 4  #Indice Inicio
+	li $a1, 11 #Indice Fim
+	li $a3, 0x31 #Valor procurado
+	j carregaPilha
+	
+	carregaPilha:
+	la $t0, A 
+	sw $t0, 12($sp) #carrega o endereco do array
+	sw $a0, 8($sp) #carrega o primeiro indice procurado
+	sw $a1, 4($sp) # carrega o valor do ultimo indice procurado
+	sw $a3, 0($sp) # valor procuado
 	j binSearch
-	nextBin:
 	
-	move $s0, $v0
-	#li  $v0, 1           # service 1 is print integer
-    	#lw $a0, rtnPosicao # load desired value into argument register $a0, using pseudo-op
-    	#syscall
+	nextBin: #volta aqui apos executar binSearch
 	
-	#para execucao
+	move $s0, $v0 #guardar o valor encontrado	
+	la $a0, msgSaida  #exibir mensagem
+	li  $v0, 4
+        syscall			
+	
+	li  $v0, 1           
+    	move $a0, $s0 
+        syscall
+    	
+    	addiu $s2, $s2, 1
+    	j inicio
+	
+	#parar a execucao
+	encerra:
+	addi $sp, $sp, 16 #limpa memória	
 	li  $v0, 10           
     	syscall
 	
@@ -98,7 +108,6 @@ main:
 		j maiorMeio
 		
 		menorMeio:
-			addi $sp, $sp, -16 	#libera espaço na pilha
 			
 			sw $t8, 12($sp) 	#posicao do array A
 			sw $t0, 8($sp) 		# valores Prim
@@ -108,7 +117,6 @@ main:
 			j binSearch
 		
 		maiorMeio:
-			addi $sp, $sp, -16 	#libera espaço na pilha
 			
 			sw $t8, 12($sp) 	#posicao do array A
 			addi $t3, $t3, 1	#atualizando o valor Ult
