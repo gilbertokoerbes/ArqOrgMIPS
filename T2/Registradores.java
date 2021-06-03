@@ -48,11 +48,11 @@ public class Registradores {
 
             for (String key : RegisterDisplay.keySet()) {
                 String value = RegisterDisplay.get(key);
-                if(value == input) return key;
+                if(value.equalsIgnoreCase(input)) return key;
             }
             
          }
-         return "Chave não existe";
+         return "Chave nao existe";
     }
     //inputType
     //0 = in->Display inteiro | out->$registrador

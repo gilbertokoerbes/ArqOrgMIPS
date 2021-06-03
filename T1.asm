@@ -16,6 +16,7 @@ main:
 	move $s2,$zero
 	addi $sp, $sp, -16 #abre espaço memória
 	inicio:
+	srl $t0,$t1,5
 	beq $s2,0 label0
 	beq $s2,1 label1
 	beq $s2,2 label2
@@ -117,7 +118,7 @@ main:
 			j binSearch
 		
 		maiorMeio:
-			
+		
 			sw $t8, 12($sp) 	#posicao do array A
 			addi $t3, $t3, 1	#atualizando o valor Ult
 			sw $t3, 8($sp) 		# valores Prim

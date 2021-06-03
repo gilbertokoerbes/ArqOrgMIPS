@@ -13,9 +13,24 @@ public class App{
 
 
         Codifica cod = new Codifica();
-        cod.type_R("add", "$8","$9", "$10");
+        Decodifica dec = new Decodifica();
+        //cod.type_SRL("srl", "$8","$9", "0x00005");
+        //cod.type_I("bne", "$9","$18", "0xfffffffa");    
+        //cod.type_I("slti", "$8","$9","0xff00000f");  
+        //cod.type_J("0x00400020");
+        //cod.type_JR("$31");
 
-
+        cod.Codificador("j 0x00400020");        
+        cod.Codificador("jr $31");
+        cod.Codificador("add $8,$9, $10");            
+        System.out.println("                ");  
+        cod.Codificador("beq $8,$9,0xfffffffb");
+        cod.Codificador("bne $9,$18, 0xfffffffa");   
+        cod.Codificador("ori $9,$9,0x00000002");
+        cod.Codificador("and $8,$9,$10");
+        cod.Codificador("srl $9,$10,0x00000001");
+        cod.Codificador("slti $8,$9,0x0000000a");
         
+    
     }   
 }
