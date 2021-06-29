@@ -1,0 +1,3 @@
+Instruções cobradas
+lui, ori, addu, lw, sw, bne, slt,
+and, j, srl.

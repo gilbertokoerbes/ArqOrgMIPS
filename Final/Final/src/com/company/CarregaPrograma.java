@@ -27,4 +27,16 @@ public class CarregaPrograma {
         }
     
     }
+
+
+    private static CarregaPrograma uniqueInstance;
+    
+    private CarregaPrograma() {
+    }
+
+    public static synchronized CarregaPrograma getInstance() {
+        if (uniqueInstance == null)
+            uniqueInstance = new CarregaPrograma();
+        return uniqueInstance;
+    }
 }

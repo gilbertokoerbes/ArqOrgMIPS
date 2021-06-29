@@ -2,6 +2,7 @@ package com.company;
 
 public class AluControl {
 
+    
 
     private static AluControl uniqueInstance;
     

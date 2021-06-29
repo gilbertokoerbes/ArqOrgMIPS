@@ -2,6 +2,11 @@ package com.company;
 
 public class AddPC {
 
+    public int add;
+    public void Add(int Add){
+        add = Add + 4;
+    }
+
 
     
 

@@ -2,11 +2,23 @@ package com.company;
 
 public class Control {
 
+    public int RegDest;
+    public int Jump;
+    public int Branch;
+    public int MemRead;
+    public int MemReg;
+    public int ALUOp;
+    public int MemWrite;
+    public int ALUSre;
+    public int RegWrite;
+
+
+
 
 
     public void ControlInput(String input){
 
-//ver (6): https://moodle.pucrs.br/pluginfile.php/2087479/mod_resource/content/1/Aula_CPUMonociclo_6pp.pdf
+        //calcular valores dos fios
 
 
     }

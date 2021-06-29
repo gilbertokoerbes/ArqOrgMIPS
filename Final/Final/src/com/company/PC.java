@@ -2,14 +2,19 @@ package com.company;
 
 public class PC {
 
+    public final int InitialPC = 4194304; //trabalhamos com inteiros
 
 
     public void Iniciar(){
-        CarregaPrograma cr = new CarregaPrograma();
-        cr.carregaInstrucoes();
+        
+        CarregaPrograma.getInstance().carregaInstrucoes();
         //cr carrega Dados
         InstructionMemory.getInstance().FirstInstruc = true;
-        InstructionMemory.getInstance().readAdress(4194304);//valor inicial de pC = primeira instrução
+        InstructionMemory.getInstance().readAdress(InitialPC);
+        AddPC.getInstance().Add(InitialPC);
+        
+
+
         
     }
     
