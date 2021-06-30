@@ -2,6 +2,25 @@ package com.company;
 
 public class Shiftleft1 {
 
+    public String InputShift;
+
+    public void ExecuteShift(String InputShift){
+        this.InputShift = InputShift;
+        InputShift = InputShift.substring(beginIndex, endIndex)
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
     private static Shiftleft1 uniqueInstance;
     
     private Shiftleft1() {

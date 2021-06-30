@@ -22,6 +22,7 @@ public class InstructionMemory {
 
     public void outInstruction(String instruction){//representa o fio de saida de InstructionMemory
         
+        //substring esta errado, verificar (31 é o final da string). opmode esta de 0 a 5, inveter todos os substrings
         Control.getInstance().ControlInput(instruction.substring(31, 26));//Encaminha para control
         Registers.getInstance().readRegister1 = instruction.substring(25, 21);
         Registers.getInstance().readRegister2 = instruction.substring(20, 16);
