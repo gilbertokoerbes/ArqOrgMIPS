@@ -24,10 +24,10 @@ public class Registers {
     }
 
     public void outPuts(String rdData1, String rdData2){
-        ALU.getInstance().inputRegisters = rdData1;
         
+        ALU.getInstance().inputRegisters = rdData1;        
         PreMuxAlu.getInstance().Mux0 = rdData2;
-        PreMuxAlu.getInstance().selectMux();
+        //PreMuxAlu.getInstance().selectMux();
 
     }
 
@@ -44,38 +44,38 @@ public class Registers {
 
     public Map<String,String> RegisterDisplay = new HashMap<String,String>(); 
     public void registerInt(){                     
-        RegisterDisplay.put("0","$0");
-        RegisterDisplay.put("1","$1");
-        RegisterDisplay.put("2","$2");
-        RegisterDisplay.put("3","$3");
-        RegisterDisplay.put("4","$4");
-        RegisterDisplay.put("5","$5");
-        RegisterDisplay.put("6","$6");
-        RegisterDisplay.put("7","$7");
-        RegisterDisplay.put("8","$8");
-        RegisterDisplay.put("9","$9");
-        RegisterDisplay.put("10","$10");
-        RegisterDisplay.put("11","$11");
-        RegisterDisplay.put("12","$12");
-        RegisterDisplay.put("13","$13");
-        RegisterDisplay.put("14","$14");
-        RegisterDisplay.put("15","$15");
-        RegisterDisplay.put("16","$16");
-        RegisterDisplay.put("17","$17");
-        RegisterDisplay.put("18","$18");
-        RegisterDisplay.put("19","$19");
-        RegisterDisplay.put("20","$20");
-        RegisterDisplay.put("21","$21");
-        RegisterDisplay.put("22","$22");
-        RegisterDisplay.put("23","$23");
-        RegisterDisplay.put("24","$24");
-        RegisterDisplay.put("25","$25");
-        RegisterDisplay.put("26","$26");
-        RegisterDisplay.put("27","$27");
-        RegisterDisplay.put("28","$28");
-        RegisterDisplay.put("29","$29");
-        RegisterDisplay.put("30","$30");
-        RegisterDisplay.put("31","$31");
+        RegisterDisplay.put("0","0");
+        RegisterDisplay.put("1","0");
+        RegisterDisplay.put("2","0");
+        RegisterDisplay.put("3","0");
+        RegisterDisplay.put("4","0");
+        RegisterDisplay.put("5","0");
+        RegisterDisplay.put("6","0");
+        RegisterDisplay.put("7","0");
+        RegisterDisplay.put("8","0");
+        RegisterDisplay.put("9","0");
+        RegisterDisplay.put("10","0");
+        RegisterDisplay.put("11","0");
+        RegisterDisplay.put("12","0");
+        RegisterDisplay.put("13","0");
+        RegisterDisplay.put("14","0");
+        RegisterDisplay.put("15","0");
+        RegisterDisplay.put("16","0");
+        RegisterDisplay.put("17","0");
+        RegisterDisplay.put("18","0");
+        RegisterDisplay.put("19","0");
+        RegisterDisplay.put("20","0");
+        RegisterDisplay.put("21","0");
+        RegisterDisplay.put("22","0");
+        RegisterDisplay.put("23","0");
+        RegisterDisplay.put("24","0");
+        RegisterDisplay.put("25","0");
+        RegisterDisplay.put("26","0");
+        RegisterDisplay.put("27","0");
+        RegisterDisplay.put("28","268468224");
+        RegisterDisplay.put("29","2147479548");
+        RegisterDisplay.put("30","0");
+        RegisterDisplay.put("31","0");
     }
 
 

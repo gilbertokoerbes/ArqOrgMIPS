@@ -1,5 +1,6 @@
 package com.company;
 
+
 public class Control {
 
     public String RegDest;
@@ -17,6 +18,8 @@ public class Control {
 
 
     public void ControlInput(String input){
+
+        System.out.println("Entrou no control.");
         if(input.equalsIgnoreCase("000000")){//type-R => addu | slt |  and | srl
             RegDest = "1";
             ALUSre = "0";
@@ -81,11 +84,30 @@ public class Control {
             ALUOp[0]=0;
             ALUOp[1]=1;
             Jump = "0";
-        }
-        
+        }    
+    }
 
+    public void ControleExecucao(){
+                //faz o controle das execuções de cada bloco
+                PreMuxRegister.getInstance().selectMux();
+                Registers.getInstance().execute();
+                SignExtend.getInstance().execute();
+                PreMuxAlu.getInstance().selectMux();
+                AluControl.getInstance().set_output_ALUControl();
+                ALU.getInstance().set_op_ALU();
+                DataMemory.getInstance().execute();
+                PosMuxDataMemory.getInstance().selectMux();
+                AddPC.getInstance().Add(PC.getInstance().PCAtual);
+                //ShiftLeft2.getInstance().ExecuteShift(InputSft); executado em Instruction;
+                JumpAdress.getInstance().executeJumpCalc();
+                Shiftleft1.getInstance().ExecuteShift(SignExtend.getInstance().signEXTENDIn);
+                AddPC2.getInstance().somaPC_Add2();
+                MuxPC.getInstance().selectMuxPC();;
+                MuxJump.getInstance().selectMuxPC();            
 
     }
+
+
 
     private static Control uniqueInstance;
 

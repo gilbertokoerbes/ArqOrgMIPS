@@ -22,16 +22,27 @@ public class InstructionMemory {
 
     public void outInstruction(String instruction){//representa o fio de saida de InstructionMemory
         
-        //substring esta errado, verificar (31 é o final da string). opmode esta de 0 a 5, inveter todos os substrings
-        Control.getInstance().ControlInput(instruction.substring(31, 26));//Encaminha para control
-        Registers.getInstance().readRegister1 = instruction.substring(25, 21);
-        Registers.getInstance().readRegister2 = instruction.substring(20, 16);
-        PreMuxRegister.getInstance().Mux0 = instruction.substring(20, 16);
-        PreMuxRegister.getInstance().Mux1 = instruction.substring(15, 11);
-        AluControl.getInstance().input_InstrucMem = instruction.substring(5,0);
-        ALU.getInstance().set_op_ALU();
-        PreMuxRegister.getInstance().selectMux();
-
+        //Control.getInstance().ControlInput(instruction.substring(31, 26));//Encaminha para control
+        //Registers.getInstance().readRegister1 = instruction.substring(25, 21);
+        //Registers.getInstance().readRegister2 = instruction.substring(20, 16);
+        //PreMuxRegister.getInstance().Mux0 = instruction.substring(20, 16);
+        //PreMuxRegister.getInstance().Mux1 = instruction.substring(15, 11);
+        //AluControl.getInstance().input_InstrucMem = instruction.substring(5,0);
+        //ALU.getInstance().set_op_ALU();
+        //PreMuxRegister.getInstance().selectMux();
+        
+        Control.getInstance().ControlInput(instruction.substring(0, 6));//Encaminha para control
+        Registers.getInstance().readRegister1 = instruction.substring(6, 11);
+        Registers.getInstance().readRegister2 = instruction.substring(11, 16);
+        PreMuxRegister.getInstance().Mux0 = instruction.substring(11, 16);
+        PreMuxRegister.getInstance().Mux1 = instruction.substring(16, 21);
+        SignExtend.getInstance().signEXTENDIn = instruction.substring(21, 32);
+        AluControl.getInstance().input_InstrucMem = instruction.substring(26,32);        
+        ShiftLeft2.getInstance().ExecuteShift(instruction.substring(6, 32));        
+        //Faz execucao
+        Control.getInstance().ControleExecucao();     
+        //ALU.getInstance().set_op_ALU();
+        //PreMuxRegister.getInstance().selectMux();
     }
     
 

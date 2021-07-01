@@ -7,13 +7,15 @@ public class PreMuxRegister {
 
 
     public void selectMux(){
+        System.out.println("Entrou no preMuxRegister. | valores (mux0,mux1) =" + Mux0 + "" + Mux1);
+
         String MuxOut ="";
         if (Control.getInstance().RegDest == "0") MuxOut = Mux0;
         else if(Control.getInstance().RegDest == "1") MuxOut = Mux1;
         else System.out.println("SEM SELEÇÃO DE MUX");
 
         Registers.getInstance().writeRegister = MuxOut;
-        Registers.getInstance().execute();
+        //Registers.getInstance().execute();
     }
 
     private static PreMuxRegister uniqueInstance;
