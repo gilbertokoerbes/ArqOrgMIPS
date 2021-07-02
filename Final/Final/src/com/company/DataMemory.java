@@ -7,7 +7,8 @@ public class DataMemory {
     public String output_dataMemory="";
 
     public void execute(){
-        System.out.println("Executando data memory sem dados");
+        System.out.println("\n------------------ Entrou no DataMemory ------------------");
+        System.out.println("          - Executando data memory sem dados");
     }
 
 

@@ -10,11 +10,11 @@ public class AluControl {
     private static AluControl uniqueInstance;
 
     public void set_output_ALUControl(){
-        
 
-        System.out.println("Entrando em set_output_ALUControl || input_InstrucMem = " + input_InstrucMem);
-        System.out.println("ALUOP[0] = " +  input_ALUOp[0] + " " + "ALUOP[1] = " +  input_ALUOp[1]);
-        System.out.println("");
+        System.out.println("\n------------------ Entrou no AluControl ------------------");
+        System.out.println("          - Valor Input_InstrucMemory = "+ input_InstrucMem);
+        System.out.println("          - Valor ALUOP[0] = " +  input_ALUOp[0]);
+        System.out.println("          - Valor ALUOP[1] = " +  input_ALUOp[1]);
         if(this.input_ALUOp[0] == 0 && this.input_ALUOp[1] == 0){
             this.output_AluControl = "010";
         }
@@ -41,7 +41,7 @@ public class AluControl {
                 this.output_AluControl = "111";
             }
         }
-        System.out.println("valor de saida de ALUop" + output_AluControl);
+        System.out.println("          - Valor Output AluControl = " + output_AluControl);
     }
     
     private AluControl() {

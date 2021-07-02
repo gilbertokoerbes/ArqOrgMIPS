@@ -5,8 +5,9 @@ public class AddPC {
     public int add;
     
     public void Add(int Add){
-        System.out.println("Entrou no add PC | valor = "+add);
+        System.out.println("\n------------------ Entrou no AddPC ------------------");
         add = Add + 4;
+        System.out.println("          - Valor PC pós incremento = "+add);
     }
 
     private static AddPC uniqueInstance;

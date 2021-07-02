@@ -7,6 +7,9 @@ public class PreMuxAlu {
     public String output_PreMuxAlu;
 
     public void selectMux(){
+        System.out.println("\n------------------ Entrou no PreMuxALU ------------------");
+        System.out.println("          - Valor Mux0 = "+ Mux0);
+        System.out.println("          - Valor Mux1 = "+ Mux1);
 
         //Ver como sincronizar signExtend com register
 
@@ -14,6 +17,7 @@ public class PreMuxAlu {
         if (Control.getInstance().ALUSre.equalsIgnoreCase("0")) MuxOut = Mux0;
         else if(Control.getInstance().ALUSre.equalsIgnoreCase("1")) MuxOut = Mux1;
         else System.out.println("SEM SELEÇÃO DE MUX Alu");
+        System.out.println("          - Valor MuxOut = "+ MuxOut);
         ALU.getInstance().inputPreMuxAlu = MuxOut;
         
     }

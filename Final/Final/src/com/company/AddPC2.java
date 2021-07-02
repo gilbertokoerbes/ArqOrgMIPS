@@ -10,9 +10,12 @@ public class AddPC2 {
 
 
     public int somaPC_Add2(){
+        System.out.println("\n------------------ Entrou no AddPC2 ------------------");
         shiftLeft1 = Shiftleft1.getInstance().Shift;
-        System.out.println("Chegou no add PC2. | valores (add1, shiftleft1) =" + add1 + "" + shiftLeft1);
+        System.out.println("          - Valor add1 = "+ add1);
+        System.out.println("          - Valor ShiftLeft1 = " + shiftLeft1);
         AddPC2Result = add1 + Integer.parseInt(shiftLeft1);
+        System.out.println("          - Valor Output = " + AddPC2Result);
         return AddPC2Result;
     }
 

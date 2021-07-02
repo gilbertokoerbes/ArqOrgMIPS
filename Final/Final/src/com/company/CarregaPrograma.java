@@ -9,9 +9,11 @@ import java.util.Scanner;
 public class CarregaPrograma {
 
     public void carregaInstrucoes() {
+        System.out.println("\n------------------ Entrou no Carrega Instruções ------------------" );
+        System.out.println("                    * Lendo Arquivo Entrada... *" );
         String fName = "instrucoes.txt"; //nome dinamico do arquivo
         String currDir = Paths.get("").toAbsolutePath().toString();
-        System.out.println("Diretório atual" + currDir);
+        System.out.println("          - Diretório atual = " + currDir);
         String nameComplete = currDir + "\\IO\\" + fName;
         Path path = Paths.get(nameComplete);        
         try (Scanner sc = new Scanner(Files.newBufferedReader(path, StandardCharsets.UTF_8))) {
@@ -31,7 +33,7 @@ public class CarregaPrograma {
 
 
                 //carrega ja na memoria de instruções
-                System.out.println("Valor de instrução gravado" + input2bin);
+                System.out.println("          - Valor de instrução gravado = " + input2bin);
                 InstructionMemory.getInstance().CarregarInstrucoes(input2bin);               
             }
 

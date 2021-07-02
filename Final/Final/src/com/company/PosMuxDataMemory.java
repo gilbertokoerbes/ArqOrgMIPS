@@ -9,11 +9,14 @@ public class PosMuxDataMemory {
     public void selectMux(){
 
         //Ver como sincronizar signExtend com register
-        System.out.println("Fazendo MUX posDatamemory");
+        System.out.println("\n------------------ Entrou no PosMuxDataMemory ------------------");
+        System.out.println("          - Valor Mux0 = "+input0);
+        System.out.println("          - Valor Mux1 = "+input1);
         String MuxOut ="";
         if (Control.getInstance().ALUSre.equalsIgnoreCase("0")) MuxOut = input0;
         else if(Control.getInstance().ALUSre.equalsIgnoreCase("1")) MuxOut = input1;
-        else System.out.println("SEM SELEÇÃO DE MUX Alu");    
+        else System.out.println("SEM SELEÇÃO DE MUX Alu");
+        System.out.println("          - Valor MuxOut = "+MuxOut);
 
         Registers.getInstance().saveDataRegister(MuxOut); 
     }

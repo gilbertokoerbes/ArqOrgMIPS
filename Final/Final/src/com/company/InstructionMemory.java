@@ -11,12 +11,14 @@ public class InstructionMemory {
 
     
     public void readAdress(int PC){
+        System.out.println("                    * Lendo Endereço... *");
         int searchInstrucAdress;
         if(FirstInstruc) searchInstrucAdress = (PC - InitialPC);//primeira instrução TRUE no inicio de PC
         else searchInstrucAdress = (PC - InitialPC)/4;
         FirstInstruc = false;//reseta apos a primeria instrução
 
-        String Readinstruc = Instrutions.get(searchInstrucAdress);        
+        String Readinstruc = Instrutions.get(searchInstrucAdress);
+        System.out.println("          - Instrução = "+Readinstruc);
         outInstruction(Readinstruc); 
     }
 
@@ -47,6 +49,7 @@ public class InstructionMemory {
     
 
     public void CarregarInstrucoes(String instrucao){//carrega a lista de execuções
+        System.out.println("\n-------- Entrou no InstructionMemory e gravou a Instrução --------");
         Instrutions.add(instrucao);
     }
 

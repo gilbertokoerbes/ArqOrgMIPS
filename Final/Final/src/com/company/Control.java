@@ -19,7 +19,8 @@ public class Control {
 
     public void ControlInput(String input){
 
-        System.out.println("Entrou no control.");
+        System.out.println("\n------------------ Entrou no control ------------------");
+        System.out.println("                    * Selecionando Instrução... *");
         if(input.equalsIgnoreCase("000000")){//type-R => addu | slt |  and | srl
             RegDest = "1";
             ALUSre = "0";
@@ -31,11 +32,13 @@ public class Control {
             ALUOp[0]=1;
             ALUOp[1]=0;
             Jump = "0";
+            System.out.println("          - Intrução = type-R => addu | slt |  and | srl");
         }
         else if (input.equalsIgnoreCase("000010")){ //Jump
             RegDest = "0";
             MemWrite="0";
             Jump = "1";
+            System.out.println("          - Intrução = Jump");
         }
         else if (input.equalsIgnoreCase("100011")){ //lw
             RegDest = "0";
@@ -48,6 +51,7 @@ public class Control {
             ALUOp[0]=0;
             ALUOp[1]=0;
             Jump = "0";
+            System.out.println("          - Intrução = lw");
         }
         else if (input.equalsIgnoreCase("101011")){ //sw
             RegDest = "0";
@@ -60,6 +64,7 @@ public class Control {
             ALUOp[0]=0;
             ALUOp[1]=0;
             Jump = "0";
+            System.out.println("          - sw");
         }
         else if (input.equalsIgnoreCase("000101")){ //bne
             //RegDest = "0";
@@ -72,6 +77,7 @@ public class Control {
             ALUOp[0]=0;
             ALUOp[1]=1;
             Jump = "0";
+            System.out.println("          - bne");
         }
         else if (input.equalsIgnoreCase("000101")){ //
             //RegDest = "0";
@@ -84,6 +90,7 @@ public class Control {
             ALUOp[0]=0;
             ALUOp[1]=1;
             Jump = "0";
+            System.out.println("          - Intrução = Outra");
         }    
     }
 
@@ -102,8 +109,9 @@ public class Control {
                 JumpAdress.getInstance().executeJumpCalc();
                 Shiftleft1.getInstance().ExecuteShift(SignExtend.getInstance().signEXTENDIn);
                 AddPC2.getInstance().somaPC_Add2();
-                MuxPC.getInstance().selectMuxPC();;
-                MuxJump.getInstance().selectMuxPC();            
+                PCSrcAND.getInstance().execute();
+                MuxPC.getInstance().selectMuxPC();
+                //MuxJump.getInstance().selectMuxPC();
 
     }
 

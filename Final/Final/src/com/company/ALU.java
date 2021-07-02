@@ -5,7 +5,7 @@ public class ALU {
     public String inputRegisters;
     public String inputPreMuxAlu;
     public String opMode_AluControl;
-    public String outputALU;
+    public String outputALU="";
     public int result, cont_aux=0;
     public boolean output_zero = false;
 
@@ -13,10 +13,10 @@ public class ALU {
     public void set_op_ALU(){
          opMode_AluControl = AluControl.getInstance().output_AluControl;
 
-        System.out.println("Entrei set_op_ALU");
-        System.out.println("Valor opMode_ALUControl (Vindo da saída do AluControl): " + opMode_AluControl);
-        System.out.println("Valor inputRegisters (Vindo da saída do Registers): " + inputRegisters);
-        System.out.println("inputPreMuxAlu (Vindo da saída do PreMuxAlu): " + inputPreMuxAlu);
+        System.out.println("\n------------------ Entrou na ALU ------------------");
+        System.out.println("          - Valor opMode_ALUControl (Vindo da saída do AluControl): " + opMode_AluControl);
+        System.out.println("          - Valor inputRegisters (Vindo da saída do Registers): " + inputRegisters);
+        System.out.println("          - Valor inputPreMuxAlu (Vindo da saída do PreMuxAlu): " + inputPreMuxAlu);
 
         if(opMode_AluControl.equals("000")){  //add
             int r1=0, r2=0;
@@ -33,7 +33,6 @@ public class ALU {
             }            
             result = r1+r2;
             this.outputALU = Integer.toBinaryString(result);
-            //System.out.println(outputALU);
             
             //Verifica se o output da zero, para transformar o outro output em true
             for(int i=0;i<outputALU.length();i++){
@@ -44,6 +43,10 @@ public class ALU {
             if(cont_aux == outputALU.length()){
                 this.output_zero = true;
             }
+
+            System.out.println("          - Valor Output = "+outputALU);
+            System.out.println("          - Operação = Add");
+            System.out.println("          - Valor Output $Zero = "+output_zero);
 
 
         }
@@ -63,7 +66,6 @@ public class ALU {
 
             this.result = r1-r2;
             this.outputALU = Integer.toBinaryString(result);
-            //System.out.println(outputALU);
 
             //Verifica se o output da zero, para transformar o outro output em true
             for(int i=0;i<outputALU.length();i++){
@@ -74,6 +76,9 @@ public class ALU {
             if(cont_aux == outputALU.length()){
                 this.output_zero = true;
             }
+            System.out.println("          - Valor Output = "+outputALU);
+            System.out.println("          - Operação = Sub");
+            System.out.println("          - Valor Output $Zero = "+output_zero);
         }
         else if(opMode_AluControl.equals("010")){ // And
             for(int i=0; i<inputRegisters.length();i++){
@@ -95,6 +100,9 @@ public class ALU {
             if(cont_aux == outputALU.length()){
                 this.output_zero = true;
             }
+            System.out.println("          - Valor Output = "+outputALU);
+            System.out.println("          - Operação = And");
+            System.out.println("          - Valor Output $Zero = "+output_zero);
         }
         else if(opMode_AluControl.equals("011")){ // Or
             for(int i=0; i<inputRegisters.length();i++){
@@ -116,6 +124,9 @@ public class ALU {
             if(cont_aux == outputALU.length()){
                 this.output_zero = true;
             }
+            System.out.println("          - Valor Output = "+outputALU);
+            System.out.println("          - Operação = Or");
+            System.out.println("          - Valor Output $Zero = "+output_zero);
         }
 
         /*else if(opMode_AluControl.equals("100")){ // Not
@@ -126,9 +137,6 @@ public class ALU {
         else if(opMode_AluControl.equals("110")){
             opMode_AluControl = "ShiftRight";
         }*/
-
-        System.out.println("Valor outputALU saindo: "+outputALU);
-        System.out.println("Saindo do Método set_op_ALU");
     }
 
     private static ALU uniqueInstance;

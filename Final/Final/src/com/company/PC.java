@@ -7,7 +7,8 @@ public class PC {
 
 
     public void Iniciar(){
-        
+
+        System.out.println("------------------ Entrou no Método Iniciar ------------------");
         CarregaPrograma.getInstance().carregaInstrucoes();
         //cr carrega Dados
         InstructionMemory.getInstance().FirstInstruc = true;

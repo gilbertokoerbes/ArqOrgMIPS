@@ -17,6 +17,11 @@ public class Registers {
 
 
     public void execute(){ //executa quando contem os parametros necessário (dipapardo por PreMuxRegister)
+        System.out.println("\n------------------ Entrou no Registers ------------------");
+        System.out.println("          - Valor readRegister1 = "+readRegister1);
+        System.out.println("          - Valor readRegister2 = "+readRegister2);
+        System.out.println("          - Valor WriteRegister = "+writeRegister);
+        System.out.println("          - Valor WriteData = "+writeData);
         // Já recebeu os sinais de instrução
         readData1 = RegisterDisplay.get(Integer.toString(Integer.parseInt(readRegister1, 2)));//obtem o valor 'data'que está no registrador (Convter binario para chave de busca)
         readData2 = RegisterDisplay.get(Integer.toString(Integer.parseInt(readRegister2, 2)));  
@@ -24,7 +29,9 @@ public class Registers {
     }
 
     public void outPuts(String rdData1, String rdData2){
-        
+
+        System.out.println("          - Valor Output ReadData1 = "+readData1);
+        System.out.println("          - Valor Output ReadData2 = "+readData2);
         ALU.getInstance().inputRegisters = rdData1;        
         PreMuxAlu.getInstance().Mux0 = rdData2;
         //PreMuxAlu.getInstance().selectMux();
