@@ -111,7 +111,7 @@ public class Control {
                 AddPC2.getInstance().somaPC_Add2();
                 PCSrcAND.getInstance().execute();
                 MuxPC.getInstance().selectMuxPC();
-                //MuxJump.getInstance().selectMuxPC();
+                MuxJump.getInstance().selectMuxPC();
 
     }
 
